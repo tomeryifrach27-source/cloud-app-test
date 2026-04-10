@@ -7,6 +7,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// החלק שחזר - יצירת החיבור למסד הנתונים!
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+});
 
 app.get('/api/servers', async (req, res) => {
   try {
@@ -34,10 +38,5 @@ app.post('/api/servers', async (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-<<<<<<< HEAD
-    console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
-=======
-  console.log(`Server running on port ${PORT}`);
-});
->>>>>>> 3a250a5 (Added Supabase DB connection and IT Asset Tracker)
